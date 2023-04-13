@@ -1,0 +1,9 @@
+<div class="flex_row">
+  <div *ngFor="let status of statuses | keyvalue">
+    <app-status [status]="status.key"></app-status>
+    <mat-divider></mat-divider>
+    <mat-list role="list">
+      <app-task *ngFor="let task of status.value" [task]="task"></app-task>
+    </mat-list>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<button mat-raised-button (click)="showForm = !showForm">Add Task</button>
+<form *ngIf="showForm" id="form" [formGroup]="form" (ngSubmit)="onAddTask()">
+  <div class="center_rel">
+    <button
+      mat-icon-button
+      aria-label="Close form"
+      (click)="showForm = !showForm"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="desc" />
+      <mat-error *ngIf="desc.invalid">{{ getDescErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <input matInput formControlName="status" />
+      <mat-error *ngIf="status.invalid">{{
+        getStatusErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+    <button [disabled]="form.invalid" type="submit" mat-raised-button>
+      Add Task
+    </button>
+  </div>
+</form>
